@@ -6,10 +6,12 @@ void XuatMangHaiChieu(int a[MAX][MAX],int Dong,int Cot);
 void Tong(int a[MAX][MAX],int Dong,int Cot);
 void TongGTDong(int a[MAX][MAX],int Dong,int Cot);
 void TongGTCot(int a[MAX][MAX],int Dong,int Cot);
+void InSoAm(int a[MAX][MAX],int Dong,int Cot);
+int amMax(int a[MAX][MAX],int Dong,int Cot);
 
 int main()
 {
-	int a[MAX][MAX],Dong,Cot, tinhTong, tongDong;
+	int a[MAX][MAX],Dong,Cot, tinhTong, tongDong,amMax1;
 	printf("Nhap so dong: ");
 	scanf("%d",&Dong);
 	printf("\nNhap so cot: ");
@@ -21,6 +23,9 @@ int main()
 	printf("\nGia tri tong cua mang:");	Tong(a,Dong,Cot);
 	printf("\nGT tong cua tung dong:");	TongGTDong(a,Dong,Cot);
 	printf("\nGia tri tong cua tung cot:"); TongGTCot(a,Dong,Cot);
+	InSoAm(a,Dong,Cot);
+	amMax1=amMax(a,Dong,Cot);
+	printf("\nGT am lon nhat cua mang la %d",amMax1);
 	return	0;
 }
 
@@ -74,4 +79,44 @@ void TongGTDong(int a[MAX][MAX],int Dong,int Cot)
 	}
 }
 
+void InSoAm(int a[MAX][MAX],int Dong,int Cot)
+{
+	printf("\nCac phan tu am trong mang:");
+	for(int i=0;i<Dong;i++)
+		for(int j=0;j<Cot;j++)
+			if(a[i][j]<0)
+				printf("%d\t",a[i][j]);
+}
 
+int soAm(int a[MAX][MAX],int Dong,int Cot)
+{
+	for(int i=0;i<Dong;i++)
+	{
+		for(int j=0;j<Cot;j++)
+		{
+			if(a[i][j]<0)
+				return	a[i][j];
+		}
+	}
+	return	0;
+}
+int amMax(int a[MAX][MAX],int Dong,int Cot)
+{
+	int max=soAm(a,Dong,Cot);
+	if(max==0)
+		return	0;
+	else
+	{
+		for(int i=0;i<Dong;i++)
+		{
+			for(int j=0;j<Cot;j++)
+			{
+				if(((a[i][j])<0)&&(a[i][j]>max))
+				{
+					max=a[i][j];
+				}
+			}
+		}			
+	}
+	return max;	
+}
