@@ -17,9 +17,7 @@ int	main()
 	CopySoLe(a,nA,b,&nB);
 	printf("\nCac so le duoc sao chep tu mang A:");	XuatMang(b,nB);
 	CopySoAm(a,nA,b1,&nB1);
-	printf("\nCac so le duoc sao chep tu mang A cho truoc:");	XuatMang(b1,nB1);
-	
-	printf("\nSo hoan hao duoc sao chep tu mang A cho truoc:"); XuatMang(b2,nB2);
+	printf("\nSo am duoc sao chep tu mang A cho truoc:"); XuatMang(b1,nB1);
 	return	0;
 }
 
@@ -56,4 +54,5 @@ void CopySoAm(int a[],int nA,int b1[], int *nB1)
 			b1[*nB1]=a[i];
 				*nB1=*nB1+1;
 		}
+		
 }
